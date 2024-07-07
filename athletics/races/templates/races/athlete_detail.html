@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load custom_filters custom_tags %}
+{% block title %}Race Results Athletes{% endblock title %}
+{% block content %}
+    <h2>{{ athlete.first_name }} {{ athlete.last_name }}</h2>
+    <p>Date of birth: {{ athlete.date_of_birth|time_display }}</p>
+    <h3>Race Results</h3>
+    <ul>
+        {% for result in race_results %}
+            <li>{{ result.race.name }}: {{ result.position|ordinal }}</li>
+        {% endfor %}
+    </ul>
+
+
+    <p><a href="{% url 'athlete_list' %}">Return to Liste des athletes</a></p>
+
+{% endblock %}
+
+

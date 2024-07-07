@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Confirmation of sending{% endblock title %}
+{% block content %}
+<h2>Emails Sent</h2>
+<p>Emails have been sent to the following athletes for the race "{{ race.name }}":</p>
+<p>Your email has been sent successfully!</p>
+<ul>
+    {% for athlete in athletes %}
+        <li>{{ athlete.first_name }} {{ athlete.last_name }} ({{ athlete.email }})</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'athlete_list' %}">Return to List of Athletes</a>
+{% endblock %}
+

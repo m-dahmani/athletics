@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load custom_filters custom_tags %}
+{% block title %}Manage Race Results{% endblock title %}
+{% block content %}
+    <h1>Manage Results</h1>
+    <table>
+        <thead>
+        <thead>
+            <tr>
+                <th>Athlete</th>
+                <th>Race</th>
+                <th>Position</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+                <tr>
+                    <td>{{ result.athlete.first_name }} {{ result.athlete.last_name }}</td>
+                    <td>{{ result.race.name }}</td>
+                    <td>{{ result.position }}</td>
+                    <td>
+                        <a href="{% url 'edit_result' result.id %}">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+{% endblock %}
+
+
+
+

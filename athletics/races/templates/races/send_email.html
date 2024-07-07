@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Send Email to Athletes{% endblock title %}
+{% block content %}
+<h2>Send Email to Athletes</h2>
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send Email</button>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Edit Result{% endblock title %}
+{% block content %}
+    <h2>Edit Race Result</h2>
+    <div class="card">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn">Save</button>
+            </form>
+        </div>
+    </div>
+    <p><a href="{% url 'manage_results' %}">Back to Manage Results</a></p>
+{% endblock %}
+

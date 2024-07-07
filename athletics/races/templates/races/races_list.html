@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load custom_filters custom_tags %}
+{% block title %}Liste des Courses{% endblock title %}
+{% block content %}
+    <h1>Liste des Courses</h1>
+    {% for race in races %}
+        <div>
+            <h2>{{ race.name }}</h2>
+            <p>Date de la course : {{ race.event_start|time_display }}</p>
+            <a href="{% url 'race_detail' race.id %}">Voir les résultats</a>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+
+
+
+

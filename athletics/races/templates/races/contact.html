@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock title %}
+{% block content %}
+<h1>Contact us</h1>
+<p>We are here to help you.</p>
+
+<form action="" method="post" novalidate>
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Send">
+</form>
+
+{% endblock %}

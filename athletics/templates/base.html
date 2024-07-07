@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--<html lang="en">-->
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Manage Results{% endblock title %}</title>
+        <link href="{% static 'style.css' %}" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'races_list' %}">Liste des Courses</a></li>
+                        <li><a href="{% url 'athlete_list' %}">Liste des Athletes</a></li>
+                        <li><a href="{% url 'contact' %}">Contact us</a></li>
+                        <li><a href="{% url 'login' %}">Log in</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div
+            {% if user.is_authenticated %}
+                <p>Hey {{ user }}!</p>
+
+                <img class="avatar" src="{% static 'images/default_profile.png' %}">
+
+                <p><a href="{% url 'send_email' %}">Send email to athletes</a></p>
+                <p><a href="{% url 'manage_results' %}">manage_results</a></p>
+                <p><a href="{% url 'password_change' %}">Change password</a></p>
+                <p><a href="{% url 'logout' %}">Sign out</a></p>
+            {% endif %}
+        </div>
+        <!-- Other content -->
+
+        <div class="showcase">
+            <div class="content">
+                <h1>Welcome to the Athletics Results Tracker</h1>
+                <p>Track the results of your favorite races and athletes</p>
+            </div>
+        </div>
+
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+
+
+        <footer>
+            <p>© 2024 Athletics Results. All Rights Reserved.</p>
+        </footer>
+    </body>
+
+</html>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load custom_filters custom_tags %}
+{% block title %}Race Results{% endblock title %}
+{% block content %}
+    <h1>Results for {{ race.name }}</h1>
+    <div class="main-content">
+        {% for result in race_results %}
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">{{ result.position|ordinal }}: {{ result.athlete.first_name }} {{ result.athlete.last_name }}</h3>
+                    <p class="card-text">Race: {{ result.race.name }}</p>
+                    <p class="card-text">Date: {{ result.race.event_start|time_display }}</p>
+                    <p class="card-text">- Competed {% times_competed result.athlete result.race %} times</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+        <p><a href="{% url 'races_list' %}">Return to Liste des Courses</a></p>
+{% endblock %}
+

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Liste des Athletes{% endblock title %}
+{% block content %}
+
+    <h2>List of Athletes</h2>
+    <ul>
+        {% for athlete in page_obj %}
+            <li><a href="{% url 'athlete_detail' athlete.id %}">{{ athlete.first_name }} {{ athlete.last_name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% include 'races/partials/pagination.html' %}
+{% endblock %}
+
